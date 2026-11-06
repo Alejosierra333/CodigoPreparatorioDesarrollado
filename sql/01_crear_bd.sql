@@ -1,0 +1,6 @@
+DROP DATABASE IF EXISTS airport_ops;
+CREATE DATABASE airport_ops CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE airport_ops;
+CREATE TABLE vuelos(id INT PRIMARY KEY,codigo VARCHAR(12) NOT NULL UNIQUE,origen VARCHAR(3) NOT NULL,destino VARCHAR(3) NOT NULL,fecha_programada DATETIME NOT NULL,estado VARCHAR(30) NOT NULL,puerta VARCHAR(8),aeronave VARCHAR(40) NOT NULL,capacidad INT NOT NULL);
+CREATE TABLE pasajeros(id INT PRIMARY KEY,documento VARCHAR(30) NOT NULL UNIQUE,nombre VARCHAR(80) NOT NULL,apellidos VARCHAR(120) NOT NULL,email VARCHAR(160));
+CREATE TABLE embarques(id INT AUTO_INCREMENT PRIMARY KEY,vuelo_id INT NOT NULL,pasajero_id INT NOT NULL,asiento VARCHAR(8) NOT NULL,clase VARCHAR(20) NOT NULL,estado VARCHAR(30) NOT NULL,equipaje BOOLEAN NOT NULL,peso_equipaje DECIMAL(6,2),FOREIGN KEY(vuelo_id) REFERENCES vuelos(id),FOREIGN KEY(pasajero_id) REFERENCES pasajeros(id),UNIQUE(vuelo_id,pasajero_id));

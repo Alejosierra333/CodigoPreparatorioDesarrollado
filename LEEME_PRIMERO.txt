@@ -1,0 +1,30 @@
+AIRPORT OPERATIONS - PREPARATORIO
+=================================
+
+Objetivo: importar a MySQL el estado de un sistema antiguo almacenado en DAT.
+
+Datos incluidos:
+- 120 vuelos
+- 800 pasajeros
+- 10266 embarques
+
+Puesta en marcha:
+1. Ejecuta sql/01_crear_bd.sql.
+2. Revisa ConexionBD.java.
+3. Añade MySQL Connector/J al Build Path.
+4. Ejecuta Main.java.
+5. Pulsa "Importar DAT" una sola vez.
+6. Pulsa "Recargar".
+
+Formato del DAT:
+int numeroVuelos
+  [int id, UTF codigo, UTF origen, UTF destino, long fechaEpochMillis,
+   UTF estado, UTF puerta, UTF aeronave, int capacidad]
+int numeroPasajeros
+  [int id, UTF documento, UTF nombre, UTF apellidos, UTF email]
+int numeroEmbarques
+  [int vueloId, int pasajeroId, UTF asiento, UTF clase, UTF estado,
+   boolean equipaje, double pesoEquipaje]
+
+La interfaz está hecha y no forma parte del trabajo evaluable.
+El proyecto funciona, pero su capa de persistencia NO debe tomarse como modelo de buena arquitectura.
